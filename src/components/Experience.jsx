@@ -1,17 +1,32 @@
 import { Canvas } from "@react-three/fiber";
 import React from "react";
 import Scene from "./Scene";
-import { OrbitControls } from "@react-three/drei";
+import { Environment, OrbitControls, Sky } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
+import { Suspense } from "react";
 
 const Experience = () => {
   return (
-    <Canvas shadows>
+    <Canvas flat shadows>
       <OrbitControls enableDamping />
-      <ambientLight intensity={2} castShadow />
-      <Physics>
-        <Scene />
-      </Physics>
+      <Environment preset="park" />
+      <directionalLight 
+        position={[5, 5, 5]} 
+        intensity={1}
+        castShadow
+        shadow-mapSize-width={4096}
+        shadow-mapSize-height={4096}
+        shadow-camera-left={-30}
+        shadow-camera-right={30}
+        shadow-camera-top={30}
+        shadow-camera-bottom={-30}
+      />
+      <Sky sunPosition={2} />
+      <Suspense fallback={null}>
+        <Physics>
+          <Scene />
+        </Physics>
+      </Suspense>
     </Canvas>
   );
 };

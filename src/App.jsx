@@ -2,14 +2,11 @@ import React from "react";
 import Experience from "./components/Experience";
 import { KeyboardControls } from "@react-three/drei";
 import { useMemo } from "react";
-
-export const Controls = {
-  forward: "forward",
-  back: "back",
-  left: "left",
-  right: "right",
-  jump: "jump",
-};
+import Start from "./components/Start";
+import Finish from "./components/Finsh";
+import useFinishedStore from "./libs/Zustand";
+import JoystickControl from "./components/Joystick";
+import { Controls } from "./libs/Controls";
 const App = () => {
   const map = useMemo(
     () => [
@@ -22,10 +19,17 @@ const App = () => {
     []
   );
 
+  const { finished } = useFinishedStore();
+
   return (
-    <KeyboardControls map={map}>
-      <Experience />
-    </KeyboardControls>
+    <>
+      <Start />
+      <KeyboardControls map={map}>
+        <Experience />
+      </KeyboardControls>
+      <JoystickControl />
+      {finished && <Finish />}
+    </>
   );
 };
 

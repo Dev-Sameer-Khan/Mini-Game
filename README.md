@@ -1,17 +1,58 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 # Mini-Game
+
+A small 3D browser mini-game built with React, Vite, and [react-three-fiber](https://docs.pmnd.rs/react-three-fiber). Navigate a 3D environment, control your character, and reach the yellow gate to finish!
+
+## Features
+
+- 3D movement using first-person controls
+- Simple keyboard navigation (WASD, Space)
+- Start and finish overlays with instructions
+- Responsive and modern UI
+
+## Controls
+
+- `W/A/S/D` or arrow keys: Move Forward / Left / Backward / Right
+- `Space`: Jump
+
+## How to Play
+
+1. Clone this repository:
+    ```bash
+    git clone https://github.com/yourusername/mini-game.git
+    cd mini-game
+    ```
+
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+
+3. Start the development server:
+    ```bash
+    npm run dev
+    ```
+
+4. Open your browser and go to `http://localhost:5173/` (Vite default).
+
+Follow the on-screen instructions to play! Reach the yellow gate to finish the game.
+
+## Tech Stack
+
+- [React](https://react.dev/)
+- [Vite](https://vite.dev/)
+- [react-three-fiber](https://docs.pmnd.rs/react-three-fiber)
+- [Zustand](https://zustand-demo.pmnd.rs/) (state management)
+
+## Project Structure
+
+- `src/components`: React components (Start screen, Finish screen, main Experience/game)
+- `src/libs`: Utilities and state management
+- `src/index.css`: Global styles
+
+## License
+
+MIT License
+
+---
+
+Made with ❤️ and [react-three-fiber](https://docs.pmnd.rs/react-three-fiber).
