@@ -79,7 +79,7 @@ const Finish = () => {
       ref={overlayRef}
       style={{
         position: "fixed",
-        zIndex: 90,
+        zIndex: 99999,
         top: 0,
         left: 0,
         width: "100vw",
