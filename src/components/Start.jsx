@@ -76,7 +76,7 @@ const Start = ({ onStart }) => {
         left: 0,
         minHeight: "100dvh",
         minWidth: "100vw",
-        zIndex: 9999,
+        zIndex: 99999,
         background: "rgba(0,0,0,0.9)",
         color: "white",
         display: "flex",

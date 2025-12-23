@@ -13,11 +13,11 @@ import { useRef } from "react";
 import { Vector3 } from "three";
 import { Playground } from "./Playground";
 import useFinishedStore from "../libs/Zustand";
-import useJoystickStore from "../libs/JoystickStore";
+import useMobileControlsStore from "../libs/JoystickStore";
 
 const Scene = () => {
   const [, get] = useKeyboardControls();
-  const { joystickDirection, jumpPressed } = useJoystickStore();
+  const { forward, back, left, right, jumpPressed } = useMobileControlsStore();
   const rb = useRef();
   const PCamera = useRef();
   const cameraTarget = useRef(new Vector3(0, 0, 0));
@@ -28,6 +28,8 @@ const Scene = () => {
   const punched = useRef(false);
 
   useFrame(() => {
+    if (!rb.current) return;
+    
     cameraTarget.current.lerp(vec3(rb.current.translation()), 0.5);
     PCamera.current.lookAt(cameraTarget.current);
 
@@ -57,21 +59,18 @@ const Scene = () => {
       rot.y -= 2;
     }
     
-    // Joystick controls - check direction values directly
-    // Joystick y-axis controls forward/back movement
-    // Negative y means forward (stick pushed up), positive y means back (stick pushed down)
-    if (Math.abs(joystickDirection.y) > 0.1) {
-      // When y is negative (forward), we want val.z to decrease
-      // When y is positive (back), we want val.z to increase
-      val.z += 5 * joystickDirection.y;
+    // Mobile controls (UI buttons)
+    if (forward) {
+      val.z -= 5;
     }
-    
-    // Joystick x-axis controls left/right rotation
-    // Negative x means left, positive x means right
-    if (Math.abs(joystickDirection.x) > 0.1) {
-      // When x is negative (left), we want positive rotation
-      // When x is positive (right), we want negative rotation
-      rot.y -= 2 * joystickDirection.x;
+    if (back) {
+      val.z += 5;
+    }
+    if (left) {
+      rot.y += 2;
+    }
+    if (right) {
+      rot.y -= 2;
     }
     
     rb.current.setAngvel(rot, true);

@@ -5,7 +5,7 @@ import { useMemo } from "react";
 import Start from "./components/Start";
 import Finish from "./components/Finsh";
 import useFinishedStore from "./libs/Zustand";
-import JoystickControl from "./components/Joystick";
+import MobileControls from "./components/MobileControls";
 import { Controls } from "./libs/Controls";
 const App = () => {
   const map = useMemo(
@@ -27,7 +27,7 @@ const App = () => {
       <KeyboardControls map={map}>
         <Experience />
       </KeyboardControls>
-      <JoystickControl />
+      <MobileControls />
       {finished && <Finish />}
     </>
   );

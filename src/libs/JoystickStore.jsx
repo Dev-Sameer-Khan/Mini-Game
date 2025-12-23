@@ -1,17 +1,21 @@
 import { create } from "zustand";
 
-// Create the joystick store
-const useJoystickStore = create((set) => ({
+// Create the mobile controls store
+const useMobileControlsStore = create((set) => ({
   // State
-  joystickDirection: { x: 0, y: 0 },
-  joystickActive: false,
+  forward: false,
+  back: false,
+  left: false,
+  right: false,
   jumpPressed: false,
 
   // Actions
-  setJoystickDirection: (direction) => set({ joystickDirection: direction }),
-  setJoystickActive: (active) => set({ joystickActive: active }),
+  setForward: (pressed) => set({ forward: pressed }),
+  setBack: (pressed) => set({ back: pressed }),
+  setLeft: (pressed) => set({ left: pressed }),
+  setRight: (pressed) => set({ right: pressed }),
   setJumpPressed: (pressed) => set({ jumpPressed: pressed }),
 }));
 
-export default useJoystickStore;
+export default useMobileControlsStore;
 
